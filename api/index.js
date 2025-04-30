@@ -391,7 +391,9 @@ oAuth2Client.setCredentials({
 app.use(express.json());
 
 
-
+app.get('/api/hello', (req, res) => {
+  res.status(200).json({ message: 'hello world' });
+});
 
 
 app.post('/api/register', async (req, res) => {
