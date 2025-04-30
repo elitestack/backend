@@ -1334,7 +1334,8 @@ app.post('/api/admin/notifications', authenticateAdmin, async (req, res) => {
 
 
 
-module.exports = app;
+// module.exports = app;
+export default app;
 
 
 // const PORT = process.env.PORT || 5000;
