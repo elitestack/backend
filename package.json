@@ -2,11 +2,11 @@
   "name": "evote",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "main": "api/index.js",
   "scripts": {
     "start": "node api/index.js",
-    "build": "cp -r api/emailService.js build/ || true",
     "dev": "nodemon api/index.js",
+    "build": "mkdir -p build && cp -r api/emailService.js build/ || true",
     "vercel-build": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
