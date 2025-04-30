@@ -2,11 +2,11 @@
   "name": "evote",
   "version": "1.0.0",
   "type": "module",
-  "main": "api/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "node api/index.js",
+    "build": "cp -r api/emailService.js build/ || true",
     "dev": "nodemon api/index.js",
-    "build": "mkdir -p build && cp -r api/emailService.js build/ || true",
     "vercel-build": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,9 +31,9 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@types/node": "20.17.32",
-    "nodemon": "3.1.10",
-    "typescript": "5.8.3"
+    "@types/node": "^20.12.7",
+    "nodemon": "^3.1.9",
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=18.0.0"
