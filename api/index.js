@@ -1324,14 +1324,11 @@ app.post('/api/admin/notifications', authenticateAdmin, async (req, res) => {
 // });
 
 
-// // Error Handling
-// app.use((err, req, res, next) => {
-//   console.error(err.stack);
-//   res.status(500).json({ message: 'Internal server error' });
-// });
-
-
-
+// Error Handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Internal server error' });
+});
 
 
 // module.exports = app;
