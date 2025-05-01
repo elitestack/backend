@@ -33,13 +33,45 @@ const app = express();
 app.use(helmet());
 app.use(cookieParser());
 
-// CORS Configuration
+
+
+// Update the CORS Configuration block
 const corsOptions = {
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: [
+    process.env.CLIENT_URL, 
+    'http://localhost:3000',
+    'https://investbit.vercel.app'
+  ],
   credentials: true,
-  exposedHeaders: ['X-User-Email']
+  exposedHeaders: ['X-User-Email'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: [
+    'Content-Type', 
+    'Authorization', 
+    'X-Requested-With',
+    'Email'
+  ]
 };
 app.use(cors(corsOptions));
+
+// Add this security middleware for trusted domains
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      connectSrc: [
+        "'self'", 
+        'https://investbit.vercel.app',
+        process.env.CLIENT_URL
+      ],
+      // Keep other CSP directives as needed
+    }
+  },
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
+
+
+
 
 app.use(express.json());
 
